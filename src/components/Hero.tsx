@@ -1,6 +1,17 @@
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const handleExploreClick = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDemoClick = () => {
+    window.open('https://calendly.com/bahadirciloglu/account-manager-b2b-seller', '_blank');
+  };
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-tech-blue to-tech-blue-light/80 text-white">
       {/* Decorative elements */}
@@ -30,10 +41,17 @@ const Hero = () => {
               productivity and innovation.
             </p>
             <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center animate-fade-up opacity-0 [animation-delay:900ms]">
-              <Button className="bg-tech-blue-light hover:bg-tech-blue-light/90 text-white font-bold text-lg px-8 py-6">
+              <Button 
+                className="bg-tech-blue-light hover:bg-tech-blue-light/90 text-white font-bold text-lg px-8 py-6"
+                onClick={handleExploreClick}
+              >
                 Explore Solutions
               </Button>
-              <Button variant="outline" className="bg-white text-tech-blue font-bold text-lg px-8 py-6">
+              <Button 
+                variant="outline" 
+                className="bg-white text-tech-blue font-bold text-lg px-8 py-6"
+                onClick={handleDemoClick}
+              >
                 Schedule a Demo
               </Button>
             </div>
