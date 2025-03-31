@@ -32,8 +32,10 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('Submitting form data:', formData);
+      
       // Save form data to Supabase
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -44,9 +46,15 @@ const ContactSection = () => {
             message: formData.message,
             submitted_at: new Date().toISOString()
           }
-        ]);
+        ])
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      console.log('Form submission successful:', data);
 
       toast({
         title: "Message sent!",
@@ -62,7 +70,7 @@ const ContactSection = () => {
         message: ""
       });
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Detailed error:', error);
       toast({
         title: "Error sending message",
         description: "Please try again later or contact us directly.",
