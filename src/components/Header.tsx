@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Services", href: "#services" },
-  { name: "Solutions", href: "#solutions" },
   { name: "About Us", href: "#about" },
   { name: "Compliance", href: "#compliance" },
   { name: "Contact", href: "#contact" },
@@ -38,6 +37,12 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -48,10 +53,10 @@ const Header = () => {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex items-center gap-x-12">
-          <Link to="/" className="font-bold text-2xl text-tech-blue">
+          <a href="#" onClick={handleLogoClick} className="font-bold text-2xl text-tech-blue">
             <span className="text-tech-green">bee</span>AI
             <span className="text-tech-blue-light">world</span>
-          </Link>
+          </a>
         </div>
         <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => (
