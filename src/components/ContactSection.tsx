@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { MapPin, Mail, Phone } from "lucide-react";
-import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -32,26 +31,11 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init("0xYK3R8qm7CRXIzkV");
-
-      // Send the email using EmailJS
-      await emailjs.send(
-        "service_lcvtm48", // Email service ID
-        "template_bwibfts", // Email template ID
-        {
-          to_email: "bahadir@beeai.world",
-          from_name: formData.name,
-          from_email: formData.email,
-          company: formData.company,
-          interest: formData.interest,
-          message: formData.message,
-        }
-      );
-
+      // Here you can add your own form submission logic
+      // For now, we'll just show a success message
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
+        title: "Form submitted!",
+        description: "Thank you for your message. We'll get back to you soon.",
       });
 
       setFormData({
@@ -63,8 +47,8 @@ const ContactSection = () => {
       });
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later or contact us directly via email.",
+        title: "Error",
+        description: "Please try again later or contact us directly.",
         variant: "destructive"
       });
     } finally {
