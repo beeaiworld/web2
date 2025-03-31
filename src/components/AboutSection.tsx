@@ -2,6 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Users, BookOpen, LightbulbIcon, Code } from "lucide-react";
 
 const AboutSection = () => {
+  const handleMeetTeamClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="about" className="section-padding bg-gray-50">
       <div className="container mx-auto px-6">
@@ -18,7 +25,10 @@ const AboutSection = () => {
               AI and robotics technologies accessible, practical, and valuable to businesses 
               across industries. I believe in technology that delivers measurable results.
             </p>
-            <Button className="bg-tech-blue hover:bg-tech-blue-light text-white font-semibold">
+            <Button 
+              className="bg-tech-blue hover:bg-tech-blue-light text-white font-semibold"
+              onClick={handleMeetTeamClick}
+            >
               Meet Our Team
             </Button>
           </div>
