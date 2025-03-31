@@ -30,6 +30,14 @@ const Header = () => {
     };
   }, []);
 
+  const handleConsultationClick = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -57,7 +65,10 @@ const Header = () => {
           ))}
         </div>
         <div className="hidden lg:flex">
-          <Button className="bg-tech-green hover:bg-tech-green-light text-white font-medium rounded-lg">
+          <Button 
+            className="bg-tech-green hover:bg-tech-green-light text-white font-medium rounded-lg"
+            onClick={handleConsultationClick}
+          >
             Get a Consultation
           </Button>
         </div>
@@ -94,7 +105,10 @@ const Header = () => {
               </a>
             ))}
             <div className="pt-4">
-              <Button className="w-full bg-tech-green hover:bg-tech-green-light text-white font-medium rounded-lg">
+              <Button 
+                className="w-full bg-tech-green hover:bg-tech-green-light text-white font-medium rounded-lg"
+                onClick={handleConsultationClick}
+              >
                 Get a Consultation
               </Button>
             </div>
